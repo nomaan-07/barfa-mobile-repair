@@ -1,5 +1,5 @@
 function Contact() {
-  return <div>ارتباط با ما</div>;
+  return <section id="contact">ارتباط با ما</section>;
 }
 
 export default Contact;

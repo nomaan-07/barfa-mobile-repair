@@ -1,14 +1,19 @@
-import type { Metadata } from "next";
-import { Vazirmatn, Inter } from "next/font/google";
-import "./globals.css";
 import { cn } from "@/lib/utils";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+import type { Metadata } from "next";
+import { Lalezar, Vazirmatn } from "next/font/google";
+import "./globals.css";
 
 const vazirmatn = Vazirmatn({
   subsets: ["arabic"],
   weight: ["300", "400", "500", "700", "900"],
   variable: "--font-vazirmatn",
+  display: "swap",
+});
+
+const lalezar = Lalezar({
+  subsets: ["arabic"],
+  weight: ["400"],
+  variable: "--font-lalezar",
   display: "swap",
 });
 
@@ -27,8 +32,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl" className={cn("font-sans", inter.variable)}>
-      <body className={`${vazirmatn.variable} font-vazirmatn`}>{children}</body>
+    <html
+      lang="fa"
+      dir="rtl"
+      className={cn(vazirmatn.variable, lalezar.variable)}
+    >
+      <body>{children}</body>
     </html>
   );
 }

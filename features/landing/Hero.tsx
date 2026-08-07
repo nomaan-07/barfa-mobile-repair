@@ -1,5 +1,5 @@
 function Hero() {
-  return <div>تعمیرات موبایل برفا</div>;
+  return <section>تعمیرات موبایل برفا</section>;
 }
 
 export default Hero;

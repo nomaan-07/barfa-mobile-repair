@@ -1,5 +1,5 @@
 function Services() {
-  return <div>سرویس‌ها</div>;
+  return <section id="services">خدمات</section>;
 }
 
 export default Services;
