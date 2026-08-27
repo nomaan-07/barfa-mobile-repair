@@ -4,6 +4,7 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
+import IconBox from "@/components/ui/IconBox";
 import type { LucideIcon } from "lucide-react";
 
 interface ServiceCardProps {
@@ -12,14 +13,11 @@ interface ServiceCardProps {
   icon: LucideIcon;
 }
 
-function ServiceCard({ title, description, icon: Icon }: ServiceCardProps) {
+function ServiceCard({ title, description, icon }: ServiceCardProps) {
   return (
     <Card className="sm:text-center">
       <CardContent className="flex gap-4 sm:block">
-        <div className="bg-primary/10 text-primary flex size-12 shrink-0 items-center justify-center rounded-xl sm:mx-auto sm:mb-5">
-          <Icon className="size-6" strokeWidth={1.5} />
-        </div>
-
+        <IconBox icon={icon} isCentered />
         <div>
           <CardTitle className="mb-2">{title}</CardTitle>
           <CardDescription>{description}</CardDescription>
