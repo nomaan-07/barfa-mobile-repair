@@ -1,5 +1,5 @@
 import { buttonVariants } from "@/components/ui/button";
-import { NAV_LINKS } from "@/constants/NavLinks";
+import { NAV_LINKS } from "@/constants/navLinks";
 
 function NavLinks() {
   return (

@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="mx-auto max-w-7xl space-y-16 px-4 md:space-y-24">
+      <main className="mx-auto max-w-7xl space-y-20 px-4 md:space-y-24">
         <Hero />
         <Services />
         <About />
