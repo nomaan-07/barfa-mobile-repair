@@ -18,7 +18,7 @@ function ServiceCard({ title, description, icon }: ServiceCardProps) {
     <Card className="sm:text-center">
       <CardContent className="flex gap-4 sm:block">
         <IconBox icon={icon} isCentered />
-        <div>
+        <div className="sm:mt-5">
           <CardTitle className="mb-2">{title}</CardTitle>
           <CardDescription>{description}</CardDescription>
         </div>

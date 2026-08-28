@@ -10,7 +10,7 @@ function IconBox({ icon: Icon, isCentered }: IconBoxProps) {
   return (
     <div
       className={cn(
-        "bg-primary/10 text-primary flex size-12 shrink-0 items-center justify-center rounded-xl sm:mb-5",
+        "bg-primary/10 text-primary flex size-12 shrink-0 items-center justify-center rounded-xl",
         isCentered && "sm:mx-auto",
       )}
     >
