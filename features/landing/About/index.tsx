@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+import SectionHeader from "@/features/landing/components/SectionHeader";
 import Features from "./components/Features";
 import WorkingHours from "./components/WorkingHours";
 

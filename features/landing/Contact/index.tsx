@@ -1,6 +1,6 @@
 import { Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 
-import SectionHeader from "@/components/shared/SectionHeader";
+import SectionHeader from "@/features/landing/components/SectionHeader";
 import ContactLink from "./components/ContactLink";
 
 // FIXME: replace with real data
