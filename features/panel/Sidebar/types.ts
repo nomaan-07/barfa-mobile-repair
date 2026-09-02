@@ -32,3 +32,9 @@ export interface SidebarHeaderButtonProps {
 export interface SidebarNavProps {
   items: Item[];
 }
+
+export interface SidebarNavItemProps {
+  title: string;
+  url: string;
+  icon: LucideIcon;
+}

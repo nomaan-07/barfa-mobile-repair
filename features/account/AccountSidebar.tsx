@@ -1,3 +1,5 @@
+"use client";
+
 import { ClipboardList, House } from "lucide-react";
 import Sidebar from "../panel/Sidebar";
 
