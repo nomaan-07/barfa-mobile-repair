@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import Logo from "../Logo";
+import Logo from "../../../components/shared/Logo";
 import BackToTopButton from "./components/BackToTopButton";
 import FooterFeatures from "./components/FooterFeatures";
 import SocialMediaLinks from "./components/SocialMediaLinks";

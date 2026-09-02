@@ -1,5 +1,5 @@
 function AccountPage() {
-  return <div>پنل مشتری</div>;
+  return <>Page</>;
 }
 
 export default AccountPage;

@@ -1,6 +1,6 @@
-import Footer from "@/components/shared/Footer";
 import About from "@/features/landing/About";
 import Contact from "@/features/landing/Contact";
+import Footer from "@/features/landing/Footer";
 import Hero from "@/features/landing/Hero";
 import LandingHeader from "@/features/landing/LandingHeader";
 import Services from "@/features/landing/Services";
