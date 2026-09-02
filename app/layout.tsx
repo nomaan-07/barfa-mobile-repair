@@ -1,3 +1,4 @@
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Lalezar, Vazirmatn } from "next/font/google";
@@ -37,7 +38,9 @@ export default function RootLayout({
       dir="rtl"
       className={cn(vazirmatn.variable, lalezar.variable)}
     >
-      <body>{children}</body>
+      <body>
+        <TooltipProvider>{children}</TooltipProvider>
+      </body>
     </html>
   );
 }

@@ -1,4 +1,5 @@
 import { ClipboardList, House } from "lucide-react";
+import Sidebar from "../panel/Sidebar";
 
 const accountMenuItems = [
   {
@@ -16,7 +17,7 @@ const accountMenuItems = [
 ];
 
 function AccountSidebar() {
-  return <div></div>;
+  return <Sidebar type="user" items={accountMenuItems} />;
 }
 
 export default AccountSidebar;
