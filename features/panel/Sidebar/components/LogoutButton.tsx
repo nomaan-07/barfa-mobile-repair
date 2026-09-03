@@ -1,16 +1,16 @@
-"use client";
-
+import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
-import SidebarHeaderButton from "./SidebarHeaderButton";
 
 function LogoutButton() {
   return (
-    <SidebarHeaderButton
-      variant="destructive"
-      tooltip="خروج از حساب کاربری"
-      icon={LogOut}
-      onClick={() => {}}
-    />
+    <Button
+      variant="secondary"
+      className="w-full justify-start md:cursor-pointer"
+      size="lg"
+    >
+      <LogOut data-icon="inline-start" />
+      خروج از حساب کاربری
+    </Button>
   );
 }
 

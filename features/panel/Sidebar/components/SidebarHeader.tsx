@@ -1,17 +1,20 @@
+import Logo from "@/components/shared/Logo";
 import { CardHeader } from "@/components/ui/card";
 import { SidebarHeaderProps } from "../types";
 import EditProfile from "./EditProfile";
-import LogoutButton from "./LogoutButton";
+import SidebarCloseButton from "./SidebarCloseButton";
 import SidebarProfile from "./SidebarProfile";
 
 function SidebarHeader({ type }: SidebarHeaderProps) {
   return (
-    <CardHeader className="flex items-center justify-between">
-      <SidebarProfile type={type} />
-
-      <div className="flex gap-2">
+    <CardHeader className="bg-primary text-secondary flex flex-col gap-4 py-4 max-lg:rounded-t-none">
+      <div className="max-md:flex max-md:w-full max-md:items-center max-md:justify-between">
+        <Logo color="secondary" size="small" />
+        <SidebarCloseButton />
+      </div>
+      <div className="flex w-full items-center justify-between">
+        <SidebarProfile type={type} />
         <EditProfile />
-        <LogoutButton />
       </div>
     </CardHeader>
   );

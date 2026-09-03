@@ -12,11 +12,12 @@ export default function AccountLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mx-auto flex max-w-7xl lg:mt-8 lg:gap-8 lg:px-4">
+    <div className="mx-auto flex max-w-7xl md:mt-8 md:gap-8 md:px-4">
       <AccountSidebar />
       <section className="w-full space-y-6 md:space-y-8">
         <header className="bg-yellow-600 p-4">Header</header>
-        <main className="mx-6 h-52 bg-emerald-600 p-4 lg:mx-0">{children}</main>
+        {/* FIXME: Remove height */}
+        <main className="mx-6 h-52 bg-emerald-600 p-4 md:mx-0">{children}</main>
       </section>
     </div>
   );

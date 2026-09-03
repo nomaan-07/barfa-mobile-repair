@@ -7,26 +7,19 @@ type Item = {
   icon: LucideIcon;
 };
 
-type SidebarType = "user" | "admin";
+type PanelType = "user" | "admin";
 
 export interface SidebarProps {
-  type: SidebarType;
+  type: PanelType;
   items: Item[];
 }
 
 export interface SidebarHeaderProps {
-  type: SidebarType;
+  type: PanelType;
 }
 
 export interface SidebarProfileProps {
-  type: SidebarType;
-}
-
-export interface SidebarHeaderButtonProps {
-  variant: "destructive" | "outline";
-  tooltip: string;
-  icon: LucideIcon;
-  onClick: () => void;
+  type: PanelType;
 }
 
 export interface SidebarNavProps {

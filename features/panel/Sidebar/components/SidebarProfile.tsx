@@ -5,18 +5,13 @@ import { SidebarProfileProps } from "../types";
 function SidebarProfile({ type }: SidebarProfileProps) {
   return (
     <div className="flex items-center gap-2">
-      <div className="bg-primary/20 flex size-10 items-center justify-center rounded-full">
+      <div className="bg-secondary flex size-10 items-center justify-center rounded-full border border-rose-500">
         <User2 className="fill-primary/30 size-7 stroke-none" />
       </div>
 
-      <div
-        className={cn(
-          "text-muted-foreground text-xs",
-          type === "admin" && "flex flex-col gap-1",
-        )}
-      >
-        {type === "admin" && <span className="font-bold">نعمان</span>}
-        <span className="">09123412342</span>
+      <div className={cn("text-xs", type === "admin" && "flex flex-col gap-1")}>
+        {type === "admin" && <span>نعمان</span>}
+        <span>09123412342</span>
       </div>
     </div>
   );

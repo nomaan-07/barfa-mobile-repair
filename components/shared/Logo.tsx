@@ -1,10 +1,22 @@
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-function Logo() {
+interface LogoProps {
+  size?: "small" | "normal";
+  color?: "primary" | "secondary";
+}
+
+function Logo({ size = "normal", color = "primary" }: LogoProps) {
   return (
     <Link
       href="/"
-      className="font-lalezar text-primary text-2xl select-none sm:text-3xl"
+      className={cn(
+        "font-lalezar select-none",
+        color === "primary" && "text-primary",
+        color === "secondary" && "text-secondary",
+        size === "small" && "text-xl",
+        size === "normal" && "text-2xl sm:text-3xl",
+      )}
     >
       برفا موبایل
     </Link>

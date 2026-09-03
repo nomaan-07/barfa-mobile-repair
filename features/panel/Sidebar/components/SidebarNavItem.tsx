@@ -9,17 +9,15 @@ function SidebarNavItem({ url, title, icon: Icon }: SidebarNavItemProps) {
   return (
     <Link
       className={cn(
-        buttonVariants({ variant: "ghost" }),
+        buttonVariants({ variant: "ghost", size: "lg" }),
         "text-muted-foreground hover:bg-primary/5 hover:text-primary relative flex justify-start",
-        pathname === url && "text-primary hover:bg-transparent",
+        pathname === url && "text-primary bg-primary/5",
       )}
+
       href={url}
     >
       <Icon data-icon="inline-start" />
       <span>{title}</span>
-      {pathname === url && (
-        <div className="bg-primary absolute top-2 right-0 h-4 w-0.5" />
-      )}
     </Link>
   );
 }

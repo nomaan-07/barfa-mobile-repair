@@ -1,16 +1,28 @@
-"use client";
-
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Settings } from "lucide-react";
-import SidebarHeaderButton from "./SidebarHeaderButton";
 
 function EditProfile() {
   return (
-    <SidebarHeaderButton
-      variant="outline"
-      tooltip="ویرایش حساب کاربری"
-      icon={Settings}
-      onClick={() => {}}
-    />
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Button
+            size="icon"
+            className="md:cursor-pointer"
+            // FIXME: Actual Function
+            onClick={() => {}}
+          />
+        }
+      >
+        <Settings className="size-4.5" />
+      </TooltipTrigger>
+      <TooltipContent>ویرایش حساب کاربری</TooltipContent>
+    </Tooltip>
   );
 }
 
