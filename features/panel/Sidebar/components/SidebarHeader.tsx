@@ -2,7 +2,8 @@ import Logo from "@/components/shared/Logo";
 import { CardHeader } from "@/components/ui/card";
 import { SidebarHeaderProps } from "../types";
 import EditProfile from "./EditProfile";
-import SidebarCloseButton from "./SidebarCloseButton";
+
+import MobileMenuCloseButton from "./MobileMenuCloseButton";
 import SidebarProfile from "./SidebarProfile";
 
 function SidebarHeader({ type }: SidebarHeaderProps) {
@@ -10,7 +11,7 @@ function SidebarHeader({ type }: SidebarHeaderProps) {
     <CardHeader className="bg-primary text-secondary flex flex-col gap-4 py-4 max-lg:rounded-t-none">
       <div className="max-md:flex max-md:w-full max-md:items-center max-md:justify-between">
         <Logo color="secondary" size="small" />
-        <SidebarCloseButton />
+        <MobileMenuCloseButton />
       </div>
       <div className="flex w-full items-center justify-between">
         <SidebarProfile type={type} />
