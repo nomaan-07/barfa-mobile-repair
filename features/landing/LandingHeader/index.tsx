@@ -1,4 +1,5 @@
 import Logo from "@/components/shared/Logo";
+import ThemeSwitcher from "@/components/shared/ThemeSwitcher";
 import AccountButton from "./components/AccountButton";
 import NavLinks from "./components/NavLinks";
 
@@ -10,7 +11,10 @@ function LandingHeader() {
           <Logo />
           <NavLinks />
         </div>
-        <AccountButton />
+        <div className="flex items-center justify-center gap-2">
+          <ThemeSwitcher />
+          <AccountButton />
+        </div>
       </div>
     </header>
   );

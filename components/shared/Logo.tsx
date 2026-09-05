@@ -13,7 +13,7 @@ function Logo({ size = "normal", color = "primary" }: LogoProps) {
       className={cn(
         "font-lalezar select-none",
         color === "primary" && "text-primary",
-        color === "secondary" && "text-secondary",
+        color === "secondary" && "text-white",
         size === "small" && "text-xl",
         size === "normal" && "text-2xl sm:text-3xl",
       )}

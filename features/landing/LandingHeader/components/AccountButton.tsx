@@ -1,43 +1,37 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ClipboardCheck, LayoutDashboard, LogIn } from "lucide-react";
+import { LogIn, User } from "lucide-react";
 import Link from "next/link";
 
-const accountButtonConfig = {
-  "logged-out": {
-    href: "/login",
-    label: "ورود به حساب کاربری",
-    icon: LogIn,
-    buttonVariant: "outline",
-  },
-  user: {
-    href: "/account/progress",
-    label: "پیگیری سفارش",
-    icon: ClipboardCheck,
-    buttonVariant: "destructive",
-  },
-  admin: {
-    href: "/admin",
-    label: "پنل مدیریت",
-    icon: LayoutDashboard,
-    buttonVariant: "default",
-  },
+const accountHref = {
+  "logged-out": "/login",
+  user: "/account",
+  admin: "/admin",
 } as const;
 
 function AccountButton() {
   // TODO: Replace with supabase user state (logged-out, user, admin).
-  const state = "logged-out";
+  const state: "user" | "admin" | "logged-out" = "logged-out";
 
-  const { href, label, buttonVariant, icon: Icon } = accountButtonConfig[state];
+  const isLoggedOut = state === "logged-out";
+
   return (
     <Link
       className={cn(
-        buttonVariants({ variant: buttonVariant }),
-        state === "logged-out" && "md:hover:bg-secondary hover:bg-transparent",
+        buttonVariants({
+          variant: "outline",
+          size: isLoggedOut ? "default" : "icon",
+        }),
+        "cursor-pointer",
+        isLoggedOut && "max-md:size-8 max-md:p-0!",
       )}
-      href={href}
+      href={accountHref[state]}
+      aria-label={isLoggedOut ? "ورود به حساب کاربری" : "حساب کاربری"}
     >
-      <Icon data-icon="inline-start" /> {label}
+      {isLoggedOut ? <LogIn data-icon="inline-start" /> : <User />}
+      {isLoggedOut && (
+        <span className="hidden md:inline">ورود به حساب کاربری</span>
+      )}
     </Link>
   );
 }

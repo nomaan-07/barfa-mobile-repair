@@ -1,5 +1,6 @@
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import type { Metadata } from "next";
 import { Lalezar, Vazirmatn } from "next/font/google";
 import "./globals.css";
@@ -37,9 +38,17 @@ export default function RootLayout({
       lang="fa"
       dir="rtl"
       className={cn(vazirmatn.variable, lalezar.variable)}
+      suppressHydrationWarning
     >
       <body>
-        <TooltipProvider>{children}</TooltipProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>{children}</TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -8,7 +8,7 @@ import SidebarProfile from "./SidebarProfile";
 
 function SidebarHeader({ type }: SidebarHeaderProps) {
   return (
-    <CardHeader className="bg-primary text-secondary flex flex-col gap-4 py-4 max-lg:rounded-t-none">
+    <CardHeader className="bg-primary flex flex-col gap-4 py-4 text-white max-lg:rounded-t-none">
       <div className="max-md:flex max-md:w-full max-md:items-center max-md:justify-between">
         <Logo color="secondary" size="small" />
         <MobileMenuCloseButton />
