@@ -5,7 +5,12 @@ import { X } from "lucide-react";
 function MobileMenuCloseButton() {
   const { closeMobileMenu } = useMobileMenu();
   return (
-    <Button size="icon" className="md:hidden" onClick={closeMobileMenu}>
+    <Button
+      size="icon"
+      className="md:hidden"
+      variant="ghost"
+      onClick={closeMobileMenu}
+    >
       <X className="size-5" />
     </Button>
   );
