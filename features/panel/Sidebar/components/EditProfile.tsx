@@ -16,6 +16,7 @@ function EditProfile() {
             className="md:cursor-pointer"
             // FIXME: Actual Function
             onClick={() => {}}
+            variant="outline"
           />
         }
       >

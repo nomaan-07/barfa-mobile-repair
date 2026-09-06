@@ -5,8 +5,8 @@ import { SidebarProfileProps } from "../types";
 function SidebarProfile({ type }: SidebarProfileProps) {
   return (
     <div className="flex items-center gap-2">
-      <div className="bg-secondary flex size-10 items-center justify-center overflow-hidden rounded-full border border-rose-600 dark:border-rose-700">
-        <User2 className="fill-primary/30 dark:fill-primary size-7 stroke-none" />
+      <div className="bg-secondary border-secondary-600 flex size-10 items-center justify-center overflow-hidden rounded-full border">
+        <User2 className="dark:fill-muted-foreground size-7 fill-gray-300 stroke-none" />
       </div>
 
       <div className={cn("text-xs", type === "admin" && "flex flex-col gap-1")}>
