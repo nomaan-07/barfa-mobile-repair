@@ -1,5 +1,11 @@
+import AccountStats from "@/features/account/home/AccountStats";
+
 function AccountPage() {
-  return <>Page</>;
+  return (
+    <>
+      <AccountStats />
+    </>
+  );
 }
 
 export default AccountPage;
