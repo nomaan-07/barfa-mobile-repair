@@ -20,9 +20,7 @@ export default function AdminLayout({
         <section className="w-full space-y-6 md:space-y-8">
           <PanelHeader />
           {/* FIXME: Remove height */}
-          <main className="mx-6 h-52 bg-emerald-600 p-4 md:mx-0">
-            {children}
-          </main>
+          <main className="h-52 bg-emerald-600 max-md:mx-6">{children}</main>
         </section>
       </div>
     </MobileMenuProvider>
