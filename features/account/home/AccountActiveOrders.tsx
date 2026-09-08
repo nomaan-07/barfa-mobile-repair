@@ -1,8 +1,9 @@
+import EmptyState from "@/components/ui/EmptyState";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { WrenchOff } from "lucide-react";
 import AccountActiveOrderCard from "./AccountActiveOrderCard";
 import { ActiveOrderStatus } from "./AccountActiveOrderCard/types";
-import NoActiveOrders from "./NoActiveOrders";
 
 interface ActiveOrder {
   orderCode: string;
@@ -13,30 +14,30 @@ interface ActiveOrder {
 
 // FIXME: get data from server
 const activeOrders = [
-  // {
-  //   orderCode: "sa-a14-27",
-  //   model: "سامسونگ A14",
-  //   status: "repairing",
-  //   problem: "کند شارژ میشه و خاموش میشه وقتی به ۲۰ درصد میرسه",
-  // },
-  // {
-  //   orderCode: "ip-13-42",
-  //   model: "آیفون 13",
-  //   status: "ready",
-  //   problem: "تعویض باتری به‌دلیل خالی شدن سریع شارژ",
-  // },
-  // {
-  //   orderCode: "xi-rn12-18",
-  //   model: "شیائومی Redmi Note 12",
-  //   status: "repairing",
-  //   problem: "صفحه‌نمایش روشن نمیشه ولی گوشی ویبره می‌زنه",
-  // },
-  // {
-  //   orderCode: "hw-y9-31",
-  //   model: "هواوی Y9",
-  //   status: "ready",
-  //   problem: "خرابی سوکت شارژ و قطع و وصل شدن هنگام شارژ",
-  // },
+  {
+    orderCode: "sa-a14-27",
+    model: "سامسونگ A14",
+    status: "repairing",
+    problem: "کند شارژ میشه و خاموش میشه وقتی به ۲۰ درصد میرسه",
+  },
+  {
+    orderCode: "ip-13-42",
+    model: "آیفون 13",
+    status: "ready",
+    problem: "تعویض باتری به‌دلیل خالی شدن سریع شارژ",
+  },
+  {
+    orderCode: "xi-rn12-18",
+    model: "شیائومی Redmi Note 12",
+    status: "repairing",
+    problem: "صفحه‌نمایش روشن نمیشه ولی گوشی ویبره می‌زنه",
+  },
+  {
+    orderCode: "hw-y9-31",
+    model: "هواوی Y9",
+    status: "ready",
+    problem: "خرابی سوکت شارژ و قطع و وصل شدن هنگام شارژ",
+  },
 ] satisfies ActiveOrder[];
 
 function AccountActiveOrders() {
@@ -84,7 +85,7 @@ function AccountActiveOrders() {
             </TabsContent>
           </Tabs>
         ) : (
-          <NoActiveOrders />
+          <EmptyState icon={WrenchOff} message="سفارش فعالی ندارید" />
         )}
       </CardContent>
     </Card>

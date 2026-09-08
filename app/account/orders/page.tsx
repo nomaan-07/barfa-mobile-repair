@@ -1,5 +1,7 @@
+import AccountOrders from "@/features/account/orders/AccountOrders";
+
 function OrdersPage() {
-  return <div>سفارشات</div>;
+  return <AccountOrders />;
 }
 
 export default OrdersPage;

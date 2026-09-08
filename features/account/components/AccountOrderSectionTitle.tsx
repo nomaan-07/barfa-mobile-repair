@@ -1,17 +1,17 @@
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 
-interface AccountActiveOrderSectionTitleProps {
+interface AccountOrderSectionTitleProps {
   title: string;
   icon: LucideIcon;
   truncate?: boolean;
 }
 
-function AccountActiveOrderSectionTitle({
+function AccountOrderSectionTitle({
   title,
   truncate,
   icon: Icon,
-}: AccountActiveOrderSectionTitleProps) {
+}: AccountOrderSectionTitleProps) {
   return (
     <div
       className={cn(
@@ -25,4 +25,4 @@ function AccountActiveOrderSectionTitle({
   );
 }
 
-export default AccountActiveOrderSectionTitle;
+export default AccountOrderSectionTitle;

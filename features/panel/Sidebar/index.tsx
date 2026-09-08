@@ -20,6 +20,7 @@ function Sidebar({ type, items }: SidebarProps) {
       >
         <Card className="h-full overflow-auto pt-0 max-md:rounded-none">
           <SidebarHeader type={type} />
+          {/* FIXME: Add closeMobileMenu to each item */}
           <SidebarNav items={items} />
           <CardFooter className="mt-auto border-none bg-inherit">
             <LogoutButton />

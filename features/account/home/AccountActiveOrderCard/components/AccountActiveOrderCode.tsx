@@ -1,5 +1,5 @@
+import AccountOrderSectionTitle from "@/features/account/components/AccountOrderSectionTitle";
 import { Hash } from "lucide-react";
-import AccountActiveOrderSectionTitle from "./AccountActiveOrderSectionTitle";
 
 interface AccountActiveOrderCodeProps {
   code: string;
@@ -8,7 +8,7 @@ interface AccountActiveOrderCodeProps {
 function AccountActiveOrderCode({ code }: AccountActiveOrderCodeProps) {
   return (
     <div className="flex items-center gap-2">
-      <AccountActiveOrderSectionTitle title="کد سفارش:" icon={Hash} />
+      <AccountOrderSectionTitle title="کد سفارش:" icon={Hash} />
       <span className="text-muted-foreground font-mono">{code}</span>
     </div>
   );

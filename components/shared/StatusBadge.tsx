@@ -13,12 +13,12 @@ const orderStatuses = {
       "bg-green-100 text-green-700 dark:bg-green-950/40 dark:text-green-300",
   },
   picked_up: {
-    label: "تحویل‌شده",
+    label: "تحویل شده",
     className:
       "bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300",
   },
   canceled: {
-    label: "لغوشده",
+    label: "لغو شده",
     className: "bg-red-100 text-red-700 dark:bg-red-950/40 dark:text-red-300",
   },
 } as const;

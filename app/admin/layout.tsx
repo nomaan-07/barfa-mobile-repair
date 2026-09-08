@@ -17,7 +17,7 @@ export default function AdminLayout({
     <MobileMenuProvider>
       <div className="mx-auto mb-8 flex max-w-7xl md:mt-8 md:gap-8 md:px-4">
         <AdminSidebar />
-        <section className="w-full space-y-6 md:space-y-8">
+        <section className="w-full min-w-0 space-y-6 md:space-y-8">
           <PanelHeader />
           {/* FIXME: Remove height */}
           <main className="h-52 bg-emerald-600 max-md:mx-6">{children}</main>
