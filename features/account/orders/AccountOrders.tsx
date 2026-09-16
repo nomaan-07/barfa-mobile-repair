@@ -1,169 +1,179 @@
 "use client";
 
 import EmptyState from "@/components/ui/EmptyState";
+import { DEFAULT_ORDER_STATUS_FILTER } from "@/constants/orderStatuses";
+import { DEFAULT_DATE_SORT } from "@/constants/sorts";
+import { StatusFilter } from "@/types/filter";
 import { AccountOrder } from "@/types/order";
+import { DateSort } from "@/types/sort";
 import { ClipboardX } from "lucide-react";
 import { useState } from "react";
 import AccountOrdersTable from "./AccountOrdersTable";
 import AccountOrdersTableControls from "./AccountOrdersTableControls";
-import { AccountTableFilterType, AccountTableSortType } from "./types";
 
 // FIXME: Get from db
-const fakeOrders: AccountOrder[] = [
+const orders: AccountOrder[] = [
   {
     orderCode: "sa-a14-27",
-    phoneBrand: "سامسونگ",
+    phoneBrandFa: "سامسونگ",
     phoneModel: "A14",
     status: "repairing",
-    problemTitle: "شارژ کند",
-    problemDescription:
+    issueTitle: "شارژ کند",
+    issueDescription:
       "گوشی با وجود استفاده از شارژر سالم، بسیار کند شارژ می‌شود و در بعضی مواقع درصد باتری برای مدت طولانی تغییری نمی‌کند.",
-    createdAt: "2025-09-05",
+    receivedAt: "2025-09-05",
   },
   {
     orderCode: "ip-13p-26",
-    phoneBrand: "آیفون",
+    phoneBrandFa: "آیفون",
     phoneModel: "13 Pro",
     status: "ready",
-    problemTitle: "روشن نشدن",
-    problemDescription:
+    issueTitle: "روشن نشدن",
+    issueDescription:
       "دستگاه پس از خاموش شدن دیگر روشن نمی‌شود و با اتصال به شارژر نیز هیچ واکنشی نشان نمی‌دهد.",
-    createdAt: "2025-09-03",
+    receivedAt: "2025-09-03",
   },
   {
     orderCode: "xi-rn12-25",
-    phoneBrand: "شیائومی",
+    phoneBrandFa: "شیائومی",
     phoneModel: "Redmi Note 12",
     status: "picked_up",
-    problemTitle: "تعویض باتری",
-    problemDescription:
+    issueTitle: "تعویض باتری",
+    issueDescription:
       "باتری دستگاه در مدت کوتاهی تخلیه می‌شود و هنگام استفاده معمولی نیز درصد شارژ به‌سرعت کاهش پیدا می‌کند.",
-    createdAt: "2025-08-28",
-    pickedUpAt: "2025-08-30",
+    receivedAt: "2025-08-28",
+    returnedAt: "2025-08-30",
     paidAmount: 1800000,
   },
   {
     orderCode: "sa-s21-24",
-    phoneBrand: "سامسونگ",
+    phoneBrandFa: "سامسونگ",
     phoneModel: "S21",
     status: "canceled",
-    problemTitle: "خرابی صفحه نمایش",
-    problemDescription:
+    issueTitle: "خرابی صفحه نمایش",
+    issueDescription:
       "صفحه نمایش دستگاه دارای خطوط عمودی است و بخشی از تصویر به‌درستی نمایش داده نمی‌شود. مشتری پس از اعلام هزینه درخواست لغو تعمیر را داشته است.",
-    createdAt: "2025-08-25",
+    receivedAt: "2025-08-25",
   },
   {
     orderCode: "ip-11-23",
-    phoneBrand: "آیفون",
+    phoneBrandFa: "آیفون",
     phoneModel: "11",
     status: "repairing",
-    problemTitle: "مشکل آنتن‌دهی",
-    problemDescription:
+    issueTitle: "مشکل آنتن‌دهی",
+    issueDescription:
       "دستگاه در بیشتر مواقع آنتن ندارد و پس از قرار دادن سیم‌کارت، شبکه به‌صورت ناپایدار متصل و قطع می‌شود.",
-    createdAt: "2025-09-04",
+    receivedAt: "2025-09-04",
   },
   {
     orderCode: "hu-nova9-22",
-    phoneBrand: "هواوی",
+    phoneBrandFa: "هواوی",
     phoneModel: "Nova 9",
     status: "ready",
-    problemTitle: "مشکل شارژ",
-    problemDescription:
+    issueTitle: "مشکل شارژ",
+    issueDescription:
       "گوشی هنگام اتصال کابل شارژ، گاهی شارژ می‌شود و گاهی اتصال قطع می‌شود. سوکت شارژ نیاز به بررسی و تعمیر دارد.",
-    createdAt: "2025-09-01",
+    receivedAt: "2025-09-01",
   },
   {
     orderCode: "xi-poco-21",
-    phoneBrand: "شیائومی",
+    phoneBrandFa: "شیائومی",
     phoneModel: "Poco X3",
     status: "picked_up",
-    problemTitle: "خرابی سوکت شارژ",
-    problemDescription:
+    issueTitle: "خرابی سوکت شارژ",
+    issueDescription:
       "کابل شارژ به‌درستی داخل سوکت قرار نمی‌گیرد و با کوچک‌ترین حرکت اتصال شارژ قطع می‌شود. سوکت شارژ تعویض شد.",
-    createdAt: "2025-08-20",
-    pickedUpAt: "2025-08-22",
+    receivedAt: "2025-08-20",
+    returnedAt: "2025-08-22",
     paidAmount: 1500000,
   },
   {
     orderCode: "sa-a52-20",
-    phoneBrand: "سامسونگ",
+    phoneBrandFa: "سامسونگ",
     phoneModel: "A52",
     status: "canceled",
-    problemTitle: "آب‌خوردگی",
-    problemDescription:
+    issueTitle: "آب‌خوردگی",
+    issueDescription:
       "دستگاه پس از تماس با آب خاموش شده و دیگر روشن نمی‌شود. آثار رطوبت در قسمت داخلی دستگاه مشاهده شده است.",
-    createdAt: "2025-08-18",
+    receivedAt: "2025-08-18",
   },
   {
     orderCode: "ip-12-19",
-    phoneBrand: "آیفون",
+    phoneBrandFa: "آیفون",
     phoneModel: "12",
     status: "repairing",
-    problemTitle: "خرابی دوربین",
-    problemDescription:
+    issueTitle: "خرابی دوربین",
+    issueDescription:
       "دوربین اصلی هنگام باز شدن تصویر تار نشان می‌دهد و فوکوس به‌درستی انجام نمی‌شود. دوربین در حال بررسی و تعمیر است.",
-    createdAt: "2025-09-06",
+    receivedAt: "2025-09-06",
   },
   {
     orderCode: "sa-s22-18",
-    phoneBrand: "سامسونگ",
+    phoneBrandFa: "سامسونگ",
     phoneModel: "S22",
     status: "ready",
-    problemTitle: "ضعف باتری",
-    problemDescription:
+    issueTitle: "ضعف باتری",
+    issueDescription:
       "ظرفیت باتری دستگاه کاهش پیدا کرده و گوشی با استفاده معمولی نیاز به شارژ مجدد در طول روز دارد. باتری تعویض شده و دستگاه آماده تحویل است.",
-    createdAt: "2025-09-02",
+    receivedAt: "2025-09-02",
   },
   {
     orderCode: "xi-11t-17",
-    phoneBrand: "شیائومی",
+    phoneBrandFa: "شیائومی",
     phoneModel: "11T",
     status: "picked_up",
-    problemTitle: "روشن نشدن",
-    problemDescription:
+    issueTitle: "روشن نشدن",
+    issueDescription:
       "دستگاه به‌صورت ناگهانی خاموش شده و هیچ واکنشی به دکمه پاور یا اتصال شارژر نداشته است. مشکل برطرف و دستگاه تست کامل شده است.",
-    createdAt: "2025-08-15",
-    pickedUpAt: "2025-08-18",
+    receivedAt: "2025-08-15",
+    returnedAt: "2025-08-18",
     paidAmount: 3500000,
   },
   {
     orderCode: "ip-xr-16",
-    phoneBrand: "آیفون",
+    phoneBrandFa: "آیفون",
     phoneModel: "XR",
     status: "canceled",
-    problemTitle: "مشکل تصویر",
-    problemDescription:
+    issueTitle: "مشکل تصویر",
+    issueDescription:
       "تصویر صفحه نمایش گاهی قطع می‌شود و صفحه برای چند ثانیه کاملاً سیاه می‌شود. پس از بررسی اولیه، مشتری تصمیم گرفت فعلاً تعمیر انجام نشود.",
-    createdAt: "2025-08-12",
+    receivedAt: "2025-08-12",
   },
-] as const;
+];
 
 function AccountOrders() {
-  const [statusFilter, setStatusFilter] =
-    useState<AccountTableFilterType>("all");
-  const [sortOrder, setSortOrder] = useState<AccountTableSortType>("newest");
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>(
+    DEFAULT_ORDER_STATUS_FILTER,
+  );
+  const [dateSort, setDateSort] = useState<DateSort>(DEFAULT_DATE_SORT);
 
   function resetControls() {
-    setStatusFilter("all");
-    setSortOrder("newest");
+    setStatusFilter(DEFAULT_ORDER_STATUS_FILTER);
+    setDateSort(DEFAULT_DATE_SORT);
   }
 
-  const displayedOrders = fakeOrders
-    .filter((order) => statusFilter === "all" || order.status === statusFilter)
+  const displayedOrders = orders
+    .filter(
+      (order) =>
+        statusFilter === DEFAULT_ORDER_STATUS_FILTER ||
+        order.status === statusFilter,
+    )
     .toSorted((a, b) => {
-      const dateA = new Date(a.createdAt).getTime();
-      const dateB = new Date(b.createdAt).getTime();
+      const dateA = new Date(a.receivedAt).getTime();
+      const dateB = new Date(b.receivedAt).getTime();
 
-      return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
+      return dateSort === DEFAULT_DATE_SORT ? dateB - dateA : dateA - dateB;
     });
 
-  const hasActiveControls = statusFilter !== "all" || sortOrder !== "newest";
+  const hasActiveControls =
+    statusFilter !== DEFAULT_ORDER_STATUS_FILTER ||
+    dateSort !== DEFAULT_DATE_SORT;
 
-  return (
+  return orders.length > 0 ? (
     <>
       <AccountOrdersTableControls
-        sortOrder={sortOrder}
-        onSortOrder={setSortOrder}
+        dateSort={dateSort}
+        onDateSort={setDateSort}
         statusFilter={statusFilter}
         onStatusFilter={setStatusFilter}
         onReset={resetControls}
@@ -178,6 +188,8 @@ function AccountOrders() {
         />
       )}
     </>
+  ) : (
+    <EmptyState icon={ClipboardX} message="هیچ سفارشی ندارید" />
   );
 }
 

@@ -1,44 +1,41 @@
 import EmptyState from "@/components/ui/EmptyState";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AccountActiveOrder } from "@/types/order";
 import { WrenchOff } from "lucide-react";
 import AccountActiveOrderCard from "./AccountActiveOrderCard";
-import { ActiveOrderStatus } from "./AccountActiveOrderCard/types";
-
-interface ActiveOrder {
-  orderCode: string;
-  model: string;
-  status: ActiveOrderStatus;
-  problem: string;
-}
 
 // FIXME: get data from server
 const activeOrders = [
   {
     orderCode: "sa-a14-27",
-    model: "سامسونگ A14",
+    phoneBrandFa: "سامسونگ",
+    phoneModel: "A14",
     status: "repairing",
-    problem: "کند شارژ میشه و خاموش میشه وقتی به ۲۰ درصد میرسه",
+    issueDescription: "کند شارژ میشه و خاموش میشه وقتی به ۲۰ درصد میرسه",
   },
   {
     orderCode: "ip-13-42",
-    model: "آیفون 13",
+    phoneBrandFa: "آیفون",
+    phoneModel: "13",
     status: "ready",
-    problem: "تعویض باتری به‌دلیل خالی شدن سریع شارژ",
+    issueDescription: "تعویض باتری به‌دلیل خالی شدن سریع شارژ",
   },
   {
     orderCode: "xi-rn12-18",
-    model: "شیائومی Redmi Note 12",
+    phoneBrandFa: "شیائومی",
+    phoneModel: "Redmi Note 12",
     status: "repairing",
-    problem: "صفحه‌نمایش روشن نمیشه ولی گوشی ویبره می‌زنه",
+    issueDescription: "صفحه‌نمایش روشن نمیشه ولی گوشی ویبره می‌زنه",
   },
   {
     orderCode: "hw-y9-31",
-    model: "هواوی Y9",
+    phoneBrandFa: "هواوی",
+    phoneModel: "Y9",
     status: "ready",
-    problem: "خرابی سوکت شارژ و قطع و وصل شدن هنگام شارژ",
+    issueDescription: "خرابی سوکت شارژ و قطع و وصل شدن هنگام شارژ",
   },
-] satisfies ActiveOrder[];
+] satisfies AccountActiveOrder[];
 
 function AccountActiveOrders() {
   const repairingOrders = activeOrders.filter(

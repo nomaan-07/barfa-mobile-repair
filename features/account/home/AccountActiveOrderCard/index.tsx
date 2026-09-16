@@ -1,26 +1,24 @@
-import AccountOrderProblem from "../../components/AccountOrderProblem";
+import { AccountActiveOrder } from "@/types/order";
+import AccountOrderIssueDescription from "../../components/AccountOrderIssueDescription";
 import AccountActiveOrderCode from "./components/AccountActiveOrderCode";
 import AccountActiveOrderHeader from "./components/AccountActiveOrderHeader";
-import { ActiveOrderStatus } from "./types";
-
-interface AccountActiveOrderCardProps {
-  model: string;
-  status: ActiveOrderStatus;
-  problem: string;
-  orderCode: string;
-}
 
 function AccountActiveOrderCard({
-  model,
+  phoneBrandFa,
+  phoneModel,
   status,
-  problem,
+  issueDescription,
   orderCode,
-}: AccountActiveOrderCardProps) {
+}: AccountActiveOrder) {
   return (
     <div className="space-y-5 py-2">
-      <AccountActiveOrderHeader model={model} status={status} />
-      <AccountOrderProblem problem={problem} />
-      <AccountActiveOrderCode code={orderCode} />
+      <AccountActiveOrderHeader
+        phoneBrandFa={phoneBrandFa}
+        phoneModel={phoneModel}
+        status={status}
+      />
+      <AccountOrderIssueDescription issueDescription={issueDescription} />
+      <AccountActiveOrderCode orderCode={orderCode} />
     </div>
   );
 }

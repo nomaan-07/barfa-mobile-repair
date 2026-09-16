@@ -13,7 +13,6 @@ function EditProfile() {
         render={
           <Button
             size="icon"
-            className="md:cursor-pointer"
             // FIXME: Actual Function
             onClick={() => {}}
             variant="outline"

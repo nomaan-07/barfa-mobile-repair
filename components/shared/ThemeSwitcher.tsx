@@ -16,7 +16,7 @@ function ThemeSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button variant="outline" size="icon" className="md:cursor-pointer">
+          <Button variant="outline" size="icon">
             <Sun className="dark:hidden" />
             <Moon className="hidden dark:block" />
             <span className="sr-only">تغییر تم</span>

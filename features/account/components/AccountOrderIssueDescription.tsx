@@ -1,11 +1,13 @@
 import { MessageSquareWarning } from "lucide-react";
 import AccountOrderSectionTitle from "./AccountOrderSectionTitle";
 
-interface AccountOrderProblemProps {
-  problem: string;
+interface AccountOrderIssueDescriptionProps {
+  issueDescription: string;
 }
 
-function AccountOrderProblem({ problem }: AccountOrderProblemProps) {
+function AccountOrderIssueDescription({
+  issueDescription,
+}: AccountOrderIssueDescriptionProps) {
   return (
     <div className="space-y-2">
       <AccountOrderSectionTitle
@@ -14,10 +16,10 @@ function AccountOrderProblem({ problem }: AccountOrderProblemProps) {
       />
 
       <p className="bg-muted darK:bg-muted/50 text-muted-foreground rounded-xl p-3 leading-7">
-        {problem}
+        {issueDescription}
       </p>
     </div>
   );
 }
 
-export default AccountOrderProblem;
+export default AccountOrderIssueDescription;

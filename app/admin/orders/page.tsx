@@ -1,5 +1,7 @@
+import AdminOrders from "@/features/admin/orders/AdminOrders";
+
 function OrdersPage() {
-  return <div>سفارشات</div>;
+  return <AdminOrders />;
 }
 
 export default OrdersPage;

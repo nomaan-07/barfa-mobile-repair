@@ -7,7 +7,6 @@ function BackToTopButton() {
   return (
     <Button
       variant="outline"
-      className="cursor-pointer"
       size="lg"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
     >

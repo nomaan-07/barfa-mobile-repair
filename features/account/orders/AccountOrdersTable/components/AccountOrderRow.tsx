@@ -1,35 +1,26 @@
 import StatusBadge from "@/components/shared/StatusBadge";
 import { TableCell, TableRow } from "@/components/ui/table";
-import { cn } from "@/lib/utils";
-import { OrderStatus } from "@/types/order";
+import { cn, formatDate } from "@/lib/utils";
+import { AccountOrder } from "@/types/order";
 import AccountOrderDetails from "./AccountOrderDetails";
 
-interface AccountOrderRowProps {
-  orderCode: string;
+type AccountOrderRowProps = AccountOrder & {
   index: number;
-  phoneBrand: string;
-  phoneModel: string;
-  problemTitle: string;
-  problemDescription: string;
-  createdAt: string;
-  status: OrderStatus;
-  paidAmount?: number;
-  pickedUpAt?: string;
   isOpen: boolean;
   toggleOrder: (orderCode: string) => void;
-}
+};
 
 function AccountOrderRow({
   orderCode,
   index,
-  phoneBrand,
+  phoneBrandFa,
   phoneModel,
-  problemTitle,
-  problemDescription,
-  createdAt,
-  status,
+  issueTitle,
+  issueDescription,
+  receivedAt,
   paidAmount,
-  pickedUpAt,
+  status,
+  returnedAt,
   isOpen,
   toggleOrder,
 }: AccountOrderRowProps) {
@@ -37,10 +28,7 @@ function AccountOrderRow({
     <>
       <TableRow
         onClick={() => toggleOrder(orderCode)}
-        className={cn(
-          "hover:bg-muted/50 h-13 cursor-pointer",
-          isOpen && "bg-muted/30",
-        )}
+        className={cn("h-13 cursor-pointer", isOpen && "bg-muted/30")}
       >
         <TableCell className="text-muted-foreground text-center">
           {(index + 1).toLocaleString("fa-IR")}
@@ -52,7 +40,7 @@ function AccountOrderRow({
 
         <TableCell>
           <p>
-            {phoneBrand} {phoneModel}
+            {phoneBrandFa} {phoneModel}
           </p>
         </TableCell>
 
@@ -61,18 +49,19 @@ function AccountOrderRow({
         </TableCell>
 
         <TableCell>
-          <p>{problemTitle}</p>
+          <p>{issueTitle}</p>
         </TableCell>
+
         <TableCell>
-          <p>{createdAt}</p>
+          <p>{formatDate(receivedAt)}</p>
         </TableCell>
       </TableRow>
 
       {isOpen && (
         <AccountOrderDetails
           paidAmount={paidAmount}
-          pickedUpAt={pickedUpAt}
-          problemDescription={problemDescription}
+          returnedAt={returnedAt}
+          issueDescription={issueDescription}
         />
       )}
     </>
