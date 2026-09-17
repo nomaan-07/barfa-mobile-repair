@@ -25,22 +25,13 @@ function ThemeSwitcher() {
       />
 
       <DropdownMenuContent align="end">
-        <DropdownMenuItem
-          className="cursor-pointer"
-          onClick={() => setTheme("light")}
-        >
+        <DropdownMenuItem onClick={() => setTheme("light")}>
           روشن
         </DropdownMenuItem>
-        <DropdownMenuItem
-          className="cursor-pointer"
-          onClick={() => setTheme("dark")}
-        >
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
           تیره
         </DropdownMenuItem>
-        <DropdownMenuItem
-          className="cursor-pointer"
-          onClick={() => setTheme("system")}
-        >
+        <DropdownMenuItem onClick={() => setTheme("system")}>
           پیش‌فرض سیستم
         </DropdownMenuItem>
       </DropdownMenuContent>
