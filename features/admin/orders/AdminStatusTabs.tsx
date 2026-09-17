@@ -5,7 +5,7 @@ import { orderStatuses } from "@/constants/orderStatuses";
 import { cn } from "@/lib/utils";
 import { StatusFilter } from "@/types/filter";
 import { OrderStatus } from "@/types/order";
-import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const allFilter = {
   label: "همه",
@@ -13,8 +13,11 @@ const allFilter = {
 };
 
 function AdminStatusTabs() {
-  // Set Filter to url
-  const [status, setStatus] = useState<StatusFilter>("all");
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  const status = searchParams.get("status") ?? "all";
 
   const filters = [
     { value: "all" as const, ...allFilter },
@@ -26,6 +29,19 @@ function AdminStatusTabs() {
     ).map(([key, config]) => ({ value: key, ...config })),
   ];
 
+  function updateStatus(value: StatusFilter) {
+    const params = new URLSearchParams(searchParams);
+
+    if (value === "all") {
+      params.delete("status");
+    } else {
+      params.set("status", value);
+    }
+
+    params.set("page", "1");
+
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }
   return (
     <div className="flex flex-wrap gap-2">
       {filters.map((filter) => {
@@ -34,9 +50,7 @@ function AdminStatusTabs() {
           <Button
             key={filter.value}
             variant="outline"
-            // FIXME: make the size sm if design allowed
-            // size="sm"
-            onClick={() => setStatus(filter.value)}
+            onClick={() => updateStatus(filter.value)}
             className={cn(
               isActive && [
                 "pointer-events-none border-transparent!",
