@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useUpdateSearchParams } from "@/hooks/useUpdateSearchParams";
 import { LucideEraser, SearchIcon } from "lucide-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 function AdminOrderSearch() {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  const updateSearchParams = useUpdateSearchParams();
 
   const [query, setQuery] = useState(searchParams.get("query") ?? "");
 
@@ -17,16 +17,11 @@ function AdminOrderSearch() {
     if (query === currentQuery) return;
 
     const timeout = setTimeout(() => {
-      const params = new URLSearchParams(searchParams);
-
-      if (query) params.set("query", query);
-      else params.delete("query");
-
-      replace(`${pathname}?${params.toString()}`);
+      updateSearchParams({ query: query || null });
     }, 400);
 
     return () => clearTimeout(timeout);
-  }, [pathname, replace, searchParams, query]);
+  }, [query, searchParams, updateSearchParams]);
 
   return (
     <div className="text-muted-foreground focus-within:border-ring dark:bg-input/30 flex h-8 w-full items-center justify-between overflow-hidden rounded-lg border pr-2.5 sm:w-54">

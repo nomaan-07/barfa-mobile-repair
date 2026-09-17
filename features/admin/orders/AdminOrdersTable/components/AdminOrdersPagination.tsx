@@ -15,13 +15,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useUpdateSearchParams } from "@/hooks/useUpdateSearchParams";
 import {
   ChevronLeft,
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 interface AdminOrdersPaginationProps {
   totalPages: number;
@@ -31,8 +32,7 @@ const rowsPerPageOptions = [10, 20, 30, 40];
 
 function AdminOrdersPagination({ totalPages }: AdminOrdersPaginationProps) {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  const updateSearchParams = useUpdateSearchParams();
 
   const currentPageParam = Number(searchParams.get("page")) || 1;
   const currentPage = Math.min(Math.max(currentPageParam, 1), totalPages);
@@ -45,22 +45,15 @@ function AdminOrdersPagination({ totalPages }: AdminOrdersPaginationProps) {
     ? rowsPerPageParam
     : 10;
 
-  function goToPage(page: number) {
-    const params = new URLSearchParams(searchParams);
-    params.set("page", String(page));
-
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }
+  const goToPage = (page: number) => updateSearchParams({ page });
 
   function changeRowsPerPage(value: string | null) {
     if (!value) return;
 
-    const params = new URLSearchParams(searchParams);
-
-    params.set("limit", value);
-    params.set("page", "1");
-
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    updateSearchParams({
+      limit: value,
+      page: 1,
+    });
   }
 
   return (

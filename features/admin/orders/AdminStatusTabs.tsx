@@ -2,10 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { orderStatuses } from "@/constants/orderStatuses";
+import { useUpdateSearchParams } from "@/hooks/useUpdateSearchParams";
 import { cn } from "@/lib/utils";
 import { StatusFilter } from "@/types/filter";
 import { OrderStatus } from "@/types/order";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const allFilter = {
   label: "همه",
@@ -14,8 +15,7 @@ const allFilter = {
 
 function AdminStatusTabs() {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  const updateSearchParams = useUpdateSearchParams();
 
   const status = searchParams.get("status") ?? "all";
 
@@ -30,18 +30,12 @@ function AdminStatusTabs() {
   ];
 
   function updateStatus(value: StatusFilter) {
-    const params = new URLSearchParams(searchParams);
-
-    if (value === "all") {
-      params.delete("status");
-    } else {
-      params.set("status", value);
-    }
-
-    params.set("page", "1");
-
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    updateSearchParams({
+      status: value === "all" ? null : value,
+      page: 1,
+    });
   }
+
   return (
     <div className="flex flex-wrap gap-2">
       {filters.map((filter) => {

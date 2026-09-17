@@ -4,9 +4,8 @@ import ClearFiltersButton from "@/components/shared/ClearFiltersButton";
 import OptionSelect from "@/components/shared/OptionSelect";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { dateSortOptions } from "@/constants/sorts";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
-// export type StatusFilter = OrderStatus | "all";
+import { useUpdateSearchParams } from "@/hooks/useUpdateSearchParams";
+import { useSearchParams } from "next/navigation";
 
 // TODO: Move to website settings when device brands become configurable.
 const deviceFilterOptions = [
@@ -29,8 +28,7 @@ const fieldClasses = "sm:w-44";
 
 function AdminOrdersTableFilter() {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  const updateSearchParams = useUpdateSearchParams();
 
   const device = searchParams.get("device") ?? "all";
   const payment = searchParams.get("payment") ?? "all";
@@ -40,30 +38,22 @@ function AdminOrdersTableFilter() {
     device !== "all" || payment !== "all" || sort !== "newest";
 
   function updateFilter(key: "device" | "payment" | "sort", value: string) {
-    const params = new URLSearchParams(searchParams);
-
-    if ((key === "device" || key === "payment") && value === "all") {
-      params.delete(key);
-    } else if (key === "sort" && value === "newest") {
-      params.delete(key);
-    } else {
-      params.set(key, value);
-    }
-
-    params.set("page", "1");
-
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    updateSearchParams({
+      [key]:
+        value === "all" || (key === "sort" && value === "newest")
+          ? null
+          : value,
+      page: 1,
+    });
   }
 
   function resetFilters() {
-    const params = new URLSearchParams(searchParams);
-
-    params.delete("device");
-    params.delete("payment");
-    params.delete("sort");
-    params.delete("page");
-
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    updateSearchParams({
+      device: null,
+      payment: null,
+      sort: null,
+      page: null,
+    });
   }
 
   return (
