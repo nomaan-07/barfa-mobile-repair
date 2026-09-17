@@ -10,6 +10,21 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
+const themes = [
+  {
+    value: "light",
+    label: "روشن",
+  },
+  {
+    value: "dark",
+    label: "تیره",
+  },
+  {
+    value: "system",
+    label: "پیش‌فرض سیستم",
+  },
+];
+
 function ThemeSwitcher() {
   const { setTheme } = useTheme();
   return (
@@ -25,15 +40,11 @@ function ThemeSwitcher() {
       />
 
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          روشن
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          تیره
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          پیش‌فرض سیستم
-        </DropdownMenuItem>
+        {themes.map(({ value, label }) => (
+          <DropdownMenuItem key={value} onClick={() => setTheme(value)}>
+            {label}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
