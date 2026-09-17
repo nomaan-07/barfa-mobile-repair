@@ -1,4 +1,5 @@
 import { buttonVariants } from "@/components/ui/button";
+import { useMobileMenu } from "@/hooks/useMobileMenu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -6,7 +7,7 @@ import { SidebarNavItemProps } from "../types";
 
 function SidebarNavItem({ url, title, icon: Icon }: SidebarNavItemProps) {
   const pathname = usePathname();
-
+  const { closeMobileMenu } = useMobileMenu();
   const isCurrentPage = pathname === url;
 
   return (
@@ -18,8 +19,8 @@ function SidebarNavItem({ url, title, icon: Icon }: SidebarNavItemProps) {
           ? "text-secondary dark:text-foreground bg-primary hover:text-secondary dark:hover:text-foreground hover:bg-primary dark:hover:bg-primary"
           : "hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/30 dark:hover:text-foreground",
       )}
-
       href={url}
+      onClick={closeMobileMenu}
     >
       <Icon data-icon="inline-start" />
       <span>{title}</span>
