@@ -126,7 +126,7 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply font-vazirmatn;
+    @apply font-vazirmatn scroll-smooth;
   }
   body {
     @apply bg-background text-foreground;

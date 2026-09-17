@@ -51,7 +51,7 @@ const services = [
 
 function Services() {
   return (
-    <section id="services">
+    <section id="services" className="scroll-mt-24">
       <SectionHeader
         title="خدمات ما"
         description="عیب‌یابی دقیق، تعمیر مطمئن"

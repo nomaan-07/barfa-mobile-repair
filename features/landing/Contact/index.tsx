@@ -40,7 +40,7 @@ const contactMethods = [
 
 function Contact() {
   return (
-    <section id="contact">
+    <section id="contact" className="scroll-mt-24">
       <SectionHeader title="تماس با ما" />
       <div className="mx-auto max-w-md space-y-4">
         {contactMethods.map(({ id, ...method }) => (

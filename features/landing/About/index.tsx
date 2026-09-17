@@ -4,7 +4,7 @@ import WorkingHours from "./components/WorkingHours";
 
 function About() {
   return (
-    <section id="about">
+    <section id="about" className="scroll-mt-24">
       <SectionHeader
         title="درباره برفا"
         description="تخصص در تعمیر، تعهد به کیفیت"
