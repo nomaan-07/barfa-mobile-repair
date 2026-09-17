@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 import { FilterIcon, PlusIcon, XCircleIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import AdminOrderSearch from "./AdminOrderSearch";
-import AdminOrdersTableFilter from "./AdminOrdersTableFilter";
+import AdminOrderSearch from "./components/AdminOrderSearch";
+import AdminOrdersTableFilter from "./components/AdminOrdersTableFilter";
 
 function AdminOrdersTableControls() {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
