@@ -4,7 +4,10 @@ import PanelHeader from "@/features/panel/PanelHeader";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "حساب کاربری",
+  title: {
+    template: "برفا موبایل | %s",
+    default: "حساب کاربری",
+  },
   description: "مدیریت حساب کاربری و سفارش‌های تعمیرات برفا موبایل.",
 };
 

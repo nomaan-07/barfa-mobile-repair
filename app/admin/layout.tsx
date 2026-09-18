@@ -4,7 +4,10 @@ import PanelHeader from "@/features/panel/PanelHeader";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "پنل مدیریت",
+  title: {
+    template: "برفا موبایل | %s",
+    default: "پنل مدیریت",
+  },
   description: "مدیریت سفارش‌ها، مشتریان و امور مالی برفا موبایل.",
 };
 
