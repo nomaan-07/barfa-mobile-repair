@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { FilterIcon, PlusIcon, XCircleIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import AdminOrderSearch from "./components/AdminOrderSearch";
+import AdminSearch from "../../components/AdminSearch";
 import AdminOrdersTableFilter from "./components/AdminOrdersTableFilter";
 
 function AdminOrdersTableControls() {
@@ -25,7 +25,7 @@ function AdminOrdersTableControls() {
             {isFiltersOpen ? <XCircleIcon /> : <FilterIcon />}
           </Button>
 
-          <AdminOrderSearch />
+          <AdminSearch />
         </div>
 
         <Link

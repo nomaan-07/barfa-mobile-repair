@@ -76,7 +76,7 @@ function AdminOrdersTableFilter() {
         />
       </Field>
       <Field className={fieldClasses}>
-        <FieldLabel>مرتب سازی</FieldLabel>
+        <FieldLabel>مرتب‌سازی</FieldLabel>
         <OptionSelect
           options={dateSortOptions}
           value={sort}

@@ -35,6 +35,7 @@ function AccountOrdersTableControls({
         options={dateSortOptions}
         value={dateSort}
         onValueChange={onDateSort}
+        label="مرتب‌سازی"
       />
 
       {hasActiveControls && <ClearFiltersButton onReset={onReset} />}

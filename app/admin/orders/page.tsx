@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 };
 
 function OrdersPage() {
-  // FIXME: Add skeleton
   return (
     <Suspense fallback={null}>
       <AdminOrdersTableControls />

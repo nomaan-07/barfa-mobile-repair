@@ -38,7 +38,7 @@ export const adminNavItems = [
   },
   {
     id: "customers",
-    title: "مشتری‌ها",
+    title: "مشتریان",
     url: "/admin/customers",
     icon: Users,
   },
