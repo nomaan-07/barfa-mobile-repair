@@ -37,6 +37,7 @@ export default function RootLayout({
     <html
       lang="fa"
       dir="rtl"
+      data-scroll-behavior="smooth"
       className={cn(vazirmatn.variable, lalezar.variable)}
       suppressHydrationWarning
     >
