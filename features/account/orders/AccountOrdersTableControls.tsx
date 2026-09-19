@@ -23,20 +23,22 @@ function AccountOrdersTableControls({
   onReset,
 }: AccountOrdersTableControlsProps) {
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <OptionSelect
-        options={orderStatusFilterOptions}
-        value={statusFilter}
-        label="وضعیت"
-        onValueChange={onStatusFilter}
-      />
+    <div className="flex flex-col gap-x-2 gap-y-4 sm:flex-row sm:items-center">
+      <div className="flex flex-wrap gap-x-2 gap-y-4 max-sm:*:w-full">
+        <OptionSelect
+          options={orderStatusFilterOptions}
+          value={statusFilter}
+          label="وضعیت"
+          onValueChange={onStatusFilter}
+        />
 
-      <OptionSelect
-        options={dateSortOptions}
-        value={dateSort}
-        onValueChange={onDateSort}
-        label="مرتب‌سازی"
-      />
+        <OptionSelect
+          options={dateSortOptions}
+          value={dateSort}
+          onValueChange={onDateSort}
+          label="مرتب‌سازی"
+        />
+      </div>
 
       {hasActiveControls && <ClearFiltersButton onReset={onReset} />}
     </div>

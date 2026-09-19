@@ -11,6 +11,7 @@ function ClearFiltersButton({ onReset }: ClearFiltersButtonProps) {
       variant="outline"
       aria-label="باز نشانی فیلترها و مرتب‌سازی"
       onClick={onReset}
+      className="w-fit"
     >
       <Undo2Icon data-icon="inline-start" /> بازنشانی
     </Button>
