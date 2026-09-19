@@ -15,7 +15,7 @@ function AdminOrdersTableControls() {
 
   return (
     <>
-      <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
+      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex gap-2 max-sm:order-2">
           <Button
             variant={isFiltersOpen ? "destructive" : "outline"}

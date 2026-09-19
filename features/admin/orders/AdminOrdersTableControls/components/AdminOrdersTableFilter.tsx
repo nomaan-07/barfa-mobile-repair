@@ -57,7 +57,7 @@ function AdminOrdersTableFilter() {
   }
 
   return (
-    <div className="relative flex flex-wrap items-end gap-6 rounded-xl border p-2">
+    <div className="relative flex flex-wrap items-end gap-4 rounded-xl border p-2">
       <div className="bg-border absolute -top-6.5 right-3.5 h-6.5 w-px" />
       <Field className={fieldClasses}>
         <FieldLabel>دستگاه</FieldLabel>
