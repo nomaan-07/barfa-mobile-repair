@@ -11,21 +11,21 @@ export type Order = {
   issueTitle: string;
   issueDescription: string;
   status: OrderStatus;
-  suggestedPrice?: number;
-  partsCost?: number;
-  finalPrice?: number;
-  paidAmount?: number;
-  timeSpent?: number;
+  suggestedPrice: number | null;
+  partsCost: number | null;
+  finalPrice: number | null;
+  paidAmount: number | null;
+  timeSpent: number | null;
   receivedAt: string;
-  deadLine?: string;
-  finishedAt?: string;
-  returnedAt?: string;
-  receivedBy: string;
-  repairedBy?: string;
-  possibleSolution?: string;
-  actualSolution?: string;
-  repairDetails?: string;
-  customerPhone?: string;
+  deadLine: string | null;
+  finishedAt: string | null;
+  returnedAt: string | null;
+  receivedB: string | null;
+  repairedBy: string | null;
+  possibleSolution: string | null;
+  actualSolution: string | null;
+  repairDetails: string | null;
+  customerPhone: string | null;
 };
 
 export type AccountActiveOrder = Pick<

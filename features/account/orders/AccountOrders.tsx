@@ -22,6 +22,8 @@ const orders: AccountOrder[] = [
     issueDescription:
       "گوشی با وجود استفاده از شارژر سالم، بسیار کند شارژ می‌شود و در بعضی مواقع درصد باتری برای مدت طولانی تغییری نمی‌کند.",
     receivedAt: "2025-09-05",
+    returnedAt: null,
+    paidAmount: null,
   },
   {
     orderCode: "ip-13p-26",
@@ -32,6 +34,8 @@ const orders: AccountOrder[] = [
     issueDescription:
       "دستگاه پس از خاموش شدن دیگر روشن نمی‌شود و با اتصال به شارژر نیز هیچ واکنشی نشان نمی‌دهد.",
     receivedAt: "2025-09-03",
+    returnedAt: null,
+    paidAmount: null,
   },
   {
     orderCode: "xi-rn12-25",
@@ -54,6 +58,8 @@ const orders: AccountOrder[] = [
     issueDescription:
       "صفحه نمایش دستگاه دارای خطوط عمودی است و بخشی از تصویر به‌درستی نمایش داده نمی‌شود. مشتری پس از اعلام هزینه درخواست لغو تعمیر را داشته است.",
     receivedAt: "2025-08-25",
+    returnedAt: null,
+    paidAmount: null,
   },
   {
     orderCode: "ip-11-23",
@@ -64,6 +70,8 @@ const orders: AccountOrder[] = [
     issueDescription:
       "دستگاه در بیشتر مواقع آنتن ندارد و پس از قرار دادن سیم‌کارت، شبکه به‌صورت ناپایدار متصل و قطع می‌شود.",
     receivedAt: "2025-09-04",
+    returnedAt: null,
+    paidAmount: null,
   },
   {
     orderCode: "hu-nova9-22",
@@ -74,6 +82,8 @@ const orders: AccountOrder[] = [
     issueDescription:
       "گوشی هنگام اتصال کابل شارژ، گاهی شارژ می‌شود و گاهی اتصال قطع می‌شود. سوکت شارژ نیاز به بررسی و تعمیر دارد.",
     receivedAt: "2025-09-01",
+    returnedAt: null,
+    paidAmount: null,
   },
   {
     orderCode: "xi-poco-21",
@@ -96,6 +106,8 @@ const orders: AccountOrder[] = [
     issueDescription:
       "دستگاه پس از تماس با آب خاموش شده و دیگر روشن نمی‌شود. آثار رطوبت در قسمت داخلی دستگاه مشاهده شده است.",
     receivedAt: "2025-08-18",
+    returnedAt: null,
+    paidAmount: null,
   },
   {
     orderCode: "ip-12-19",
@@ -106,6 +118,8 @@ const orders: AccountOrder[] = [
     issueDescription:
       "دوربین اصلی هنگام باز شدن تصویر تار نشان می‌دهد و فوکوس به‌درستی انجام نمی‌شود. دوربین در حال بررسی و تعمیر است.",
     receivedAt: "2025-09-06",
+    returnedAt: null,
+    paidAmount: null,
   },
   {
     orderCode: "sa-s22-18",
@@ -116,6 +130,8 @@ const orders: AccountOrder[] = [
     issueDescription:
       "ظرفیت باتری دستگاه کاهش پیدا کرده و گوشی با استفاده معمولی نیاز به شارژ مجدد در طول روز دارد. باتری تعویض شده و دستگاه آماده تحویل است.",
     receivedAt: "2025-09-02",
+    returnedAt: null,
+    paidAmount: null,
   },
   {
     orderCode: "xi-11t-17",
@@ -138,6 +154,8 @@ const orders: AccountOrder[] = [
     issueDescription:
       "تصویر صفحه نمایش گاهی قطع می‌شود و صفحه برای چند ثانیه کاملاً سیاه می‌شود. پس از بررسی اولیه، مشتری تصمیم گرفت فعلاً تعمیر انجام نشود.",
     receivedAt: "2025-08-12",
+    returnedAt: null,
+    paidAmount: null,
   },
 ];
 

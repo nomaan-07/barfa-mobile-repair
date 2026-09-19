@@ -1,15 +1,19 @@
 import StatusBadge from "@/components/shared/StatusBadge";
 import { TableCell, TableRow } from "@/components/ui/table";
-import { formatDate, toPersianDigits } from "@/lib/utils";
+import { formatDate, getRowNumber, toPersianDigits } from "@/lib/utils";
 import { AdminOrder } from "@/types/order";
 import AdminOrderActions from "./AdminOrderActions";
 
 type AdminOrderRowProps = AdminOrder & {
   index: number;
+  currentPage: number;
+  rowsPerPage: number;
 };
 
 function AdminOrderRow({
   index,
+  currentPage,
+  rowsPerPage,
   orderCode,
   phoneBrandFa,
   phoneModel,
@@ -23,17 +27,13 @@ function AdminOrderRow({
   return (
     <TableRow className="h-13">
       <TableCell className="text-muted-foreground text-center">
-        {(index + 1).toLocaleString("fa-IR")}
+        {getRowNumber(currentPage, rowsPerPage, index).toLocaleString("fa-IR")}
       </TableCell>
 
-      <TableCell>
-        <p className="font-mono">{orderCode}</p>
-      </TableCell>
+      <TableCell className="font-mono">{orderCode}</TableCell>
 
       <TableCell>
-        <p>
-          {phoneBrandFa} {phoneModel}
-        </p>
+        {phoneBrandFa} {phoneModel}
       </TableCell>
 
       <TableCell>
@@ -41,26 +41,20 @@ function AdminOrderRow({
       </TableCell>
 
       <TableCell>
-        {customerPhone ? <p>{toPersianDigits(customerPhone)}</p> : "-"}
+        {customerPhone ? toPersianDigits(customerPhone) : "-"}
       </TableCell>
 
-      <TableCell>
-        <p>{issueTitle}</p>
-      </TableCell>
+      <TableCell>{issueTitle}</TableCell>
 
-      <TableCell>
-        <p>{formatDate(receivedAt)}</p>
-      </TableCell>
+      <TableCell>{formatDate(receivedAt)}</TableCell>
 
-      <TableCell>
-        {returnedAt ? <p>{formatDate(returnedAt)}</p> : "-"}
-      </TableCell>
+      <TableCell>{returnedAt ? formatDate(returnedAt) : "-"}</TableCell>
 
       <TableCell>
         {paidAmount ? (
-          <p className="text-green-600">
+          <span className="text-green-600">
             {paidAmount.toLocaleString("fa-IR")} ت
-          </p>
+          </span>
         ) : (
           "-"
         )}

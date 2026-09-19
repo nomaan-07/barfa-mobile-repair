@@ -6,8 +6,8 @@ import AccountOrderDetailItem from "./AccountOrderDetailItem";
 
 interface AccountOrderDetailsProps {
   issueDescription: string;
-  returnedAt?: string;
-  paidAmount?: number;
+  returnedAt: string | null;
+  paidAmount: number | null;
 }
 
 function AccountOrderDetails({

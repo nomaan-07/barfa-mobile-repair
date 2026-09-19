@@ -22,28 +22,24 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-import { useSearchParams } from "next/navigation";
 
-interface AdminOrdersPaginationProps {
+interface AdminPaginationProps {
   totalPages: number;
+  currentPage: number;
+  rowsPerPage: number;
+  rowsPerPageOptions: number[];
 }
 
-const rowsPerPageOptions = [10, 20, 30, 40];
-
-function AdminOrdersPagination({ totalPages }: AdminOrdersPaginationProps) {
-  const searchParams = useSearchParams();
+function AdminPagination({
+  totalPages,
+  currentPage,
+  rowsPerPage,
+  rowsPerPageOptions,
+}: AdminPaginationProps) {
   const updateSearchParams = useUpdateSearchParams();
-
-  const currentPageParam = Number(searchParams.get("page")) || 1;
-  const currentPage = Math.min(Math.max(currentPageParam, 1), totalPages);
 
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
-
-  const rowsPerPageParam = Number(searchParams.get("limit")) || 10;
-  const rowsPerPage = rowsPerPageOptions.includes(rowsPerPageParam)
-    ? rowsPerPageParam
-    : 10;
 
   const goToPage = (page: number) => updateSearchParams({ page });
 
@@ -88,6 +84,7 @@ function AdminOrdersPagination({ totalPages }: AdminOrdersPaginationProps) {
 
         <Pagination className="justify-end">
           <PaginationContent className="gap-2">
+            {/* First page */}
             <PaginationItem className="max-lg:hidden">
               <Button
                 disabled={isFirstPage}
@@ -145,4 +142,4 @@ function AdminOrdersPagination({ totalPages }: AdminOrdersPaginationProps) {
   );
 }
 
-export default AdminOrdersPagination;
+export default AdminPagination;

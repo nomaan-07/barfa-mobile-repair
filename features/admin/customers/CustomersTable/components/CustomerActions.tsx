@@ -10,18 +10,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
+  ClipboardListIcon,
   EllipsisVerticalIcon,
-  EyeIcon,
   PencilIcon,
   Trash2Icon,
 } from "lucide-react";
 
-interface AdminOrderActionsProps {
-  orderCode: string;
+interface CustomerActionsProps {
+  customerCode: string;
 }
 
-function AdminOrderActions({ orderCode }: AdminOrderActionsProps) {
-  // TODO: use orderCode for deleting order or navigate to edit and view page
+function CustomerActions({ customerCode }: CustomerActionsProps) {
+  // TODO: use customerCode for deleting and editing customer or showing orders
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -34,8 +35,8 @@ function AdminOrderActions({ orderCode }: AdminOrderActionsProps) {
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <EyeIcon />
-            مشاهده
+            <ClipboardListIcon />
+            سفارش‌ها
           </DropdownMenuItem>
           <DropdownMenuItem>
             <PencilIcon />
@@ -54,4 +55,4 @@ function AdminOrderActions({ orderCode }: AdminOrderActionsProps) {
   );
 }
 
-export default AdminOrderActions;
+export default CustomerActions;
