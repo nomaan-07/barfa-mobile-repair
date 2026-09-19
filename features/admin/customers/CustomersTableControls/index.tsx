@@ -6,8 +6,8 @@ function CustomersTableControls() {
   return (
     <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
       <div className="flex flex-col flex-wrap gap-x-2 gap-y-4 max-sm:order-2 sm:flex-row sm:items-center">
-        <CustomersTableSort />
         <AdminSearch />
+        <CustomersTableSort />
       </div>
       <AddCustomerButton />
     </div>
